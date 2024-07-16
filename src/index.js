@@ -34,4 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
     .then(() => dogBreedsEl.appendChild(breedsFragment));
+
+  // Challenge 3
+  dogBreedsEl.addEventListener("click", (event) => {
+    if (event.target.matches("li.dog-breed")) {
+      event.target.classList.add("bg-black", "text-white");
+    }
+  });
 });
