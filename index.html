@@ -12,22 +12,28 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="bg-secondary bg-gradient" style="--bs-bg-opacity: 0.5">
-    <h1>Dog CEO</h1>
+  <body
+    class="bg-secondary bg-gradient p-5 container"
+    style="--bs-bg-opacity: 0.5"
+  >
+    <h1 class="text-center">Dog CEO</h1>
 
-    <div id="dog-image-container">
+    <div
+      id="dog-image-container"
+      class="mt-5 d-flex flex-wrap justify-content-center gap-5"
+    >
       <!-- images here -->
     </div>
 
     <hr />
     <label for="select-breed">Filter Breeds That Start with:</label>
-    <select id="breed-dropdown" name="select-breed">
+    <select id="breed-dropdown" name="select-breed" class="form-select">
       <option value="a">a</option>
       <option value="b">b</option>
       <option value="c">c</option>
       <option value="d">d</option>
     </select>
 
-    <ul id="dog-breeds"></ul>
+    <ul id="dog-breeds" class="list-group mt-4"></ul>
   </body>
 </html>

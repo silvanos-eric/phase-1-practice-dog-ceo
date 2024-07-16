@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (key.startsWith(breedDropDownEl.value)) {
           const newBreedEl = document.createElement("li");
           newBreedEl.textContent = key;
-          newBreedEl.classList.add("dog-breed");
+          newBreedEl.classList.add("dog-breed", "list-group-item");
 
           breedsFragment.appendChild(newBreedEl);
         }
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (key.startsWith(newValue.toString().toLowerCase())) {
             const newBreedEl = document.createElement("li");
             newBreedEl.textContent = key;
-            newBreedEl.classList.add("dog-breed");
+            newBreedEl.classList.add("dog-breed", "list-group-item");
 
             breedsFragment.appendChild(newBreedEl);
           }

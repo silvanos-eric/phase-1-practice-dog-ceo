@@ -1,3 +1,18 @@
 li.dog-breed {
   cursor: pointer;
 }
+
+img {
+  max-width: 100%;
+}
+
+#dog-image-container {
+  img {
+    max-height: 200px;
+    object-fit: contain;
+  }
+}
+
+select {
+  cursor: pointer;
+}
