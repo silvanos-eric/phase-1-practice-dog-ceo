@@ -17,4 +17,21 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(() => {
       dogImageContainerEl.appendChild(imagesFragment);
     });
+
+  // Challenge 2
+  const dogBreedsEl = document.querySelector("ul#dog-breeds");
+  const breedsFragment = document.createDocumentFragment();
+
+  fetch("https://dog.ceo/api/breeds/list/all")
+    .then((response) => response.json())
+    .then(({ message }) => {
+      for (key in message) {
+        const newBreedEl = document.createElement("li");
+        newBreedEl.textContent = key;
+        newBreedEl.classList.add("dog-breed");
+
+        breedsFragment.appendChild(newBreedEl);
+      }
+    })
+    .then(() => dogBreedsEl.appendChild(breedsFragment));
 });
