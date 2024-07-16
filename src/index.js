@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Challenge 1
   const dogImageContainerEl = document.querySelector("div#dog-image-container");
   const imagesFragment = document.createDocumentFragment();
+  const breedDropDownEl = document.querySelector("select#breed-dropdown");
 
   fetch("https://dog.ceo/api/breeds/image/random/4")
     .then((response) => response.json())
@@ -26,11 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((response) => response.json())
     .then(({ message }) => {
       for (key in message) {
-        const newBreedEl = document.createElement("li");
-        newBreedEl.textContent = key;
-        newBreedEl.classList.add("dog-breed");
+        if (key.startsWith(breedDropDownEl.value)) {
+          const newBreedEl = document.createElement("li");
+          newBreedEl.textContent = key;
+          newBreedEl.classList.add("dog-breed");
 
-        breedsFragment.appendChild(newBreedEl);
+          breedsFragment.appendChild(newBreedEl);
+        }
       }
     })
     .then(() => dogBreedsEl.appendChild(breedsFragment));
@@ -40,5 +43,29 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target.matches("li.dog-breed")) {
       event.target.classList.add("bg-black", "text-white");
     }
+  });
+
+  // Challenge 4
+
+  breedDropDownEl.addEventListener("change", (event) => {
+    const newValue = event.target.value;
+
+    fetch("https://dog.ceo/api/breeds/list/all")
+      .then((response) => response.json())
+      .then(({ message }) => {
+        for (key in message) {
+          if (key.startsWith(newValue.toString().toLowerCase())) {
+            const newBreedEl = document.createElement("li");
+            newBreedEl.textContent = key;
+            newBreedEl.classList.add("dog-breed");
+
+            breedsFragment.appendChild(newBreedEl);
+          }
+        }
+      })
+      .then(() => {
+        dogBreedsEl.innerHTML = null;
+        dogBreedsEl.appendChild(breedsFragment);
+      });
   });
 });
